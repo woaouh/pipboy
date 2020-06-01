@@ -1,7 +1,11 @@
 @import "libs"
 @import "vars"
-	
-@import url(https://fonts.googleapis.com/css?family=VT323);
+
+@font-face
+  font-family: 'VT323'
+  font-style: normal
+  font-weight: 400
+  src: local("VT323 Regular"), local("VT323-Regular"), url('../fonts/vt323-v11-latin-regular.woff2') format("woff2"), url('../fonts/vt323-v11-latin-regular.woff') format("woff")
 
 @keyframes scroll
 	0%	
@@ -57,14 +61,17 @@ html, body
 	background: #383838
 	color: $text-color
 	font-size: 30px
-	font-family: 'VT323', Courier
-	height: 100%
+	min-width: 320px
+	font-family: 'VT323', monospace
+	overflow-x: hidden
+	position: relative
+	line-height: 1.5
 
 .container
 	max-width: 1024px
 
 a
-	color: white
+	color: #ffffff
 	text-decoration: none
 	&:hover
 		color: $accent-color
@@ -77,11 +84,37 @@ ul
 	padding: 0
 	margin: 0
 
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+	&.img-width
+		width: 100%
+
+.container-fluid
+	max-width: 1200px
+	padding: 0 $gutter
+
+section
+	padding:
+		top: $gutter
+		bottom: $gutter
+	h2
+		text-transform: uppercase
+		line-height: 1
+	h3
+		line-height: 1
+
 .main-header 
 	text-transform: uppercase
 
-.main-nav 
+.main-nav
+	padding-top: $gutter
+	padding-bottom: $gutter
+	ul
+		text-align: center
 	li 
+		display: inline-block
 		text-align: center
 	a:before
 		color: $text-color
@@ -91,6 +124,7 @@ ul
 		content: ' ] '
 
 .mobile-menu-button
+	padding-top: $gutter
 	color: $text-color
 	text-align: center
 	cursor: pointer
@@ -118,6 +152,10 @@ ul
 		text-align: center
 		padding: 0
 		margin: 0
+
+.second-section
+	border-top: 3px solid $text-color
+	border-bottom: 3px solid $text-color
 
 .overlay
 	height: 1px
@@ -152,73 +190,21 @@ ul
 
 .wrapper
 	animation: scroll 2s 1
-	margin: 0
-	padding: 0
-	overflow: hidden
 
 .content
 	animation: scroll 3s 1
-	padding: 40px
-	position: relative
-	overflow: hidden
 
-.second-section
+.main-footer
+	text-align: center
 	border-top: 3px solid $text-color
-	border-bottom: 3px solid $text-color
-	padding: 20px 80px
-	margin-top: 20px
-	margin-bottom: 20px
+	padding: 10px
+	p:first-child
+		margin-top: 20px
+	i
+		font-size: 80px
 
-label
-	clear: left
-	display: block
-	float: left
-	margin-right: 10px
-	padding-top: 5px
-
-input[type=text], textarea
-	background: transparent
-	border: none
-	color: $text-color
-	display: block
-	float: left
-	font-family: 'VT323', Courier
-	font-size: 1.2em
-	position: relative
-	width: 80%
-	z-index: 10
-
-textarea
-	margin-bottom: 20px
-	overflow: auto
-	resize: none
-
-input[type=text]:focus, textarea:focus, input[type=submit]:focus, a.button:focus
-	outline: 0
-
-input[type=submit], a.button
-	background: transparent
-	border: 1px solid $text-color
-	clear: both
-	color: $text-color
-	cursor: hand
-	display: inline-block
-	font-family: 'VT323', Courier
-	font-size: 1em
-	margin-bottom: 20px
-	opacity: 0.25
-	padding: 10px 100px
-	position: relative
-	text-decoration: none
-	text-transform: uppercase
-	z-index: 10
-
-input[type=submit]:hover, a.button:hover
-	background: $text-color
-	color: #383838
-	opacity: 0.8
-
-.divisions h2
-	font-weight: bold
+.first-section-post
+	h3
+		margin-top: 20px
 
 @import "media" // Always at the end
